@@ -16,3 +16,7 @@
 8) in terminal type => os install
 9) select bootcaps session
 10) select project
+
+
+## How to run os test/os sumbit
+type in terminal => os [action]
