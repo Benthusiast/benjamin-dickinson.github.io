@@ -6,6 +6,13 @@
  * IN CLASS EXERCISE: stringy.js
  */
 
+/** 
+ * I: 
+ * O: 
+ * C: 
+ * E: ??
+*/
+
 /**
  * Given an input String, return its length.
  *
@@ -15,15 +22,15 @@
 /** 
  * I: takes a string as an input
  * O: returns the length of the string as a number
- * C:
- * E:
+ * C: n/a
+ * E: ??
 */
 
 
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
-
+    //return the length of the string as a number
+    return string.length;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -31,11 +38,16 @@ function length(string) {
 /**
  * Given an input String, return a new String forced to lowercase.
  */
+/** 
+ * I: takes a string as an input
+ * O: returns the string in all lower case
+ * C: n/a
+ * E: ??
+*/
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+    return string.toLowerCase;
+    
     // YOUR CODE ABOVE HERE //
 }
 
