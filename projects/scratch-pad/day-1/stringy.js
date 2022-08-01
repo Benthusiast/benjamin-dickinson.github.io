@@ -46,16 +46,30 @@ function length(string) {
 */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-    return string.toLowerCase;
-    
+    //create a variable to store the new string in all lowercase
+    var loweredString = string.toLowerCase();
+    //return the new string
+    return loweredString;
+
     // YOUR CODE ABOVE HERE //
 }
 
 /**
  * Given an input String, return a new String forced to uppercase.
  */
+
+/** 
+ * I: takes 1 param, a string 
+ * O: returns a new string in all uppercase
+ * C: n/a
+ * E: ??
+*/
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
+    //create a variable to store the new string in all lowercase
+    var upperedString = string.toUpperCase();
+    //return the new string
+    return upperedString;
 
 
 
@@ -75,9 +89,18 @@ function toUpperCase(string) {
  *
  *      See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Using_global_and_ignore_with_replace()
  */
+/** 
+ * I: takes a string as an input
+ * O: returns the a new string in dash case
+ * C: n/a
+ * E: ??
+*/
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
+    var splitArray = string.split(" ");
+    var joinedString = splitArray.join("-");
+    joinedString = joinedString.toLowerCase();
+    return joinedString;
 
 
     // YOUR CODE ABOVE HERE //
@@ -95,11 +118,24 @@ function toDashCase(string) {
  * TIP: How can you use Array access to your advantage here? How can you
  *      ensure uppercase and lowercase can be compared equally?
  */
+
+/** 
+ * I: takes a string and a character as inputs
+ * O: returns a boolean value of true or false
+ * C: return true if the given string begins with the given character
+ * E: make sure function is case insensitive
+*/
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    
-
+    // create lowercase versions of the given parameters in local variables
+    var testString = string.toLowerCase();
+    var testChar = char.toLowerCase();
+    //check if matching and return appropriate boolean value
+    if(testString[0] == testChar){
+        return true;
+    }else{
+        return false;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -115,11 +151,23 @@ function beginsWith(string, char) {
  * TIP: How can you use Array access to your advantage here? How can you
  *      ensure uppercase and lowercase can be compared equally?
  */
+/** 
+ * I: takes a string anda character as inputs
+ * O: returns a boolean value
+ * C: should not be case sensitive 
+ * E: ??
+*/
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-
-
+    //create lower case version of each parameter
+    var testString = string.toLowerCase();
+    var testChar = char.toLowerCase();
+    //check if matching and return appropriate boolean
+    if(testString[testString.length - 1] === testChar){
+        return true;
+    }else{
+        return false;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -128,10 +176,18 @@ function endsWith(string, char) {
  *
  * TIP: What's the operator to concatenate two Strings?
  */
+/** 
+ * I: takes two strings as inputs
+ * O: returns a new string
+ * C: new string is the parameter strings concatenated
+ * E: ??
+*/
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    //create a new string that is the two params concatenated
+    var fuuusionHa = stringOne + stringTwo;
+    //return the new string
+    return fuuusionHa;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -146,10 +202,17 @@ function concat(stringOne, stringTwo) {
  * TIP: This Function pulls out all the arguments passed to it and stores them
  *      in an Array called args.
  */
+/** 
+ * I: takes some number of strings as inputs
+ * O: returns a single string that  is all arguments concatenated
+ * C: n/a
+ * E: ??
+*/
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    //return the stored strings as a single string
+    return args.join("");
 
     // YOUR CODE ABOVE HERE //
 }
@@ -163,11 +226,22 @@ function join(stringOne, stringTwo) {
  *
  * TIP: What property of the String do we need to compare?
  */
+/** 
+ * I: takes two strings as inputs
+ * O: returns the longer of the two input strings
+ * C: n/a
+ * E: ??
+*/
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    //compare argument lengths and return the longer argument
+    if(stringOne.length > stringTwo.length){
+        return stringOne;
+    }else if(stringOne.length < stringTwo.length){
+        return stringTwo;
+    }else{
+        return "Arguments are of equal length.";
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -180,8 +254,7 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    return stringTwo.localeCompare(stringOne);
 
     // YOUR CODE ABOVE HERE //
 }
@@ -197,7 +270,7 @@ function sortAscending(stringOne, stringTwo) {
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+return stringOne.localeCompare(stringTwo);
 
 
     // YOUR CODE ABOVE HERE //
