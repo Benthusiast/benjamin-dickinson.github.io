@@ -53,7 +53,8 @@ function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
     
     return function(string){
-        if(string[0] === startsWith){
+        
+        if(string[0].toLowerCase() === startsWith.toLowerCase()){
             return true;
         }else{
             return false;
@@ -72,7 +73,7 @@ function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     
     return function(string){
-        if(string[string.length - 1] === endsWith){
+        if(string[string.length - 1].toLowerCase() === endsWith.toLowerCase()){
             return true;
         }else{
             return false;
