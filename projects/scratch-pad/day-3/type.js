@@ -15,10 +15,9 @@
 function isArray(value) {
     // YOUR CODE BELOW HERE //
     
+    return value instanceof Array;
     
-    
-    
-    // YOUR CODE ABOVE HERE //
+        // YOUR CODE ABOVE HERE //
 }
 
 /** 
@@ -33,9 +32,14 @@ function isObject(value) {
     // YOUR CODE BELOW HERE //
     //if typeof value === "object"
     // value is not null, array or date object
-    
-    
-    
+
+
+    if(typeof value === "object"){
+        return true;
+    }else{
+        return false;
+    }
+
     // YOUR CODE ABOVE HERE //
 }
 
