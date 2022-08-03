@@ -31,7 +31,8 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
+    //if typeof value === "object"
+    // value is not null, array or date object
     
     
     
