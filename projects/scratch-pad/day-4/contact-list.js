@@ -35,7 +35,11 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
+    var contact = {};
+    contact.id = id;
+    contact.nameFirst = nameFirst;
+    contact.nameLast = nameLast;
+    return contact;
 } 
 
 
@@ -51,13 +55,34 @@ function makeContactList() {
             return contacts.length;
         },
         addContact: function(contact){//takes in a contact object
-            contacts.puch(contact);//adds contact argument to the contacts array
+            contacts.push(contact);//adds contact argument to the contacts array
         },
-        findContact : function(fullName){
-            //iterate through array with a loop
-            //determine if match
-            //return object if match
-            //return undefined if no match
+        findContact: function(fullName){
+            for(var i = 0; i < contacts.length; i++){//iterate through array with a loop
+                var checkAgainst = contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]; //makes a string to compare the argument against
+                if(checkAgainst.toLowerCase() === fullName.toLowerCase()){//determine if match
+                    return contacts[i];//return object if match
+                }else{
+                    return undefined;//return undefined if no match
+                } 
+            }
+            
+            
+        },
+        removeContact: function(contact){
+            for(var i = 0; i < contacts.length; i++){//iterate through array with a loop
+                if(contacts[i]["id"] === contact["id"]){
+                    contacts.splice(i, 1);
+                }
+            }
+        },
+        printAllContactNames: function(){
+            var fullNamesArray = [];
+            for(var i = 0; i < contacts.length; i++){//iterate through array with a loop
+                var nameFull = contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]; //makes a string to print
+                fullNamesArray.push(nameFull)
+            }
+            return fullNamesArray.join("\n");
         }
     }
 }
