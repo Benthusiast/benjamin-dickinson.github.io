@@ -254,6 +254,14 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    // if(stringOne > stringTwo){
+    //     return 1;
+    // }else if(stringOne < stringTwo){
+    //     return -1;
+    // }else if(stringOne === stringTwo){
+    //     return 0;
+    // }
+    
     return stringTwo.localeCompare(stringOne);
 
     // YOUR CODE ABOVE HERE //
@@ -268,8 +276,14 @@ function sortAscending(stringOne, stringTwo) {
  * TIP: How can we compare Strings? Is 'a' greater than or less than 'b'?
  */
 function sortDescending(stringOne, stringTwo) {
-    // YOUR CODE BELOW HERE //
-
+       // YOUR CODE BELOW HERE //
+    // if(stringOne < stringTwo){
+    //     return 1;
+    // }else if(stringOne > stringTwo){
+    //     return -1;
+    // }else if(stringOne === stringTwo){
+    //     return 0;
+    // }
 return stringOne.localeCompare(stringTwo);
 
 
