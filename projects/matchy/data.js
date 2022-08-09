@@ -113,6 +113,7 @@ console.log(animals); // [ ] console.log animals, and, console.log the length of
 
 //choosing the array data structure to hold the list of friends.
 //choosing that structure as it is the only one that will pass the assignments tests
+
 var friends = []; //Create a variable called friends and assign it to the data structure that you chose.
 
 
