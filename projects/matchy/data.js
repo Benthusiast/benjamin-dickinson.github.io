@@ -126,7 +126,7 @@ function getRandom(array){// [ ] Write a function called getRandom that takes ou
 }
 friends.push(animals[getRandom(animals)]["name"]);// [ ] Using a random index from this function that you just created, get a random animal and add its name to friends.
 
-animals[0]["friends"] = friends;
+animals[getRandom(animals)]["friends"] = friends;
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
