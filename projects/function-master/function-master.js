@@ -111,7 +111,13 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    if(object.noises === undefined){
+        return "there are no noises";
+    }else if(object.noises.length >= 1){
+        return object.noises.join(" ");
+    }else if(object.noises.length === 0){
+            return "there are no noises";
+        }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -119,7 +125,14 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    var lookFor = word.toLowercase();
+    var toCheck = string.split(" ");
+    for(var i = 0; i < toCheck.length; i++){
+        toCheck[i] = toCheck[i].toLowercase();
+    }
+    for(var i = 0; i < toCheck.length; i++){
+        if lookFor
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
