@@ -3,7 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+    var returnArray = [];
+    for(var key in object){
+        returnArray.push(object[key]);
+    }
+    return returnArray; 
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +15,11 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+    var valueArray = [];
+    for(var key in object){
+        valueArray.push(key);
+    }
+    return valueArray.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +27,12 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    var valueArray = [];
+    for(var key in object){
+        if(typeof object[key] === "string")
+        valueArray.push(object[key]);
+    }
+    return valueArray.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +40,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if(Array.isArray(collection)){
+        return"array";
+    }else if(typeof collection === "object"){
+        return "object";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +52,11 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    var stringArray = string.split("");
+    var bigLetter = stringArray[0].toUpperCase();
+    stringArray.shift();
+    stringArray.unshift(bigLetter);
+    return stringArray.join("");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +64,15 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+    var wordsArray = string.split(" ");
+    for(var i = 0; i < wordsArray.length; i++){
+        var stringArray = wordsArray[i].split("");
+        var bigLetter = stringArray[0].toUpperCase();
+        stringArray.shift();
+        stringArray.unshift(bigLetter);
+        wordsArray[i] = stringArray.join("");
+    }
+    return wordsArray.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +80,12 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    var stringArray = object.name.split("");
+    var bigLetter = stringArray[0].toUpperCase();
+    stringArray.shift();
+    stringArray.unshift(bigLetter);
+    dude = stringArray.join("");
+    return "Welcome " + dude +"!"
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -59,7 +93,17 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    var stringArray = object.name.split("");
+    var bigLetter = stringArray[0].toUpperCase();
+    stringArray.shift();
+    stringArray.unshift(bigLetter);
+    dude = stringArray.join("");
+    var stringArray2 = object.species.split("");
+    var bigLetter2 = stringArray2[0].toUpperCase();
+    stringArray2.shift();
+    stringArray2.unshift(bigLetter2);
+    whatsit = stringArray2.join("");
+    return dude + " is a " + whatsit; 
 }
 
 //////////////////////////////////////////////////////////////////////
