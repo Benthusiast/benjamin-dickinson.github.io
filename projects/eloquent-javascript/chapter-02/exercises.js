@@ -4,8 +4,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function triangles(number) {
-
+  var triangleLayer = "#";
+  var triangle = [];
+  for(var i = 0; i < number; i++){
+    console.log(triangleLayer);
+    triangle.push(triangleLayer);
+    triangleLayer = triangleLayer + "#";    
+  }
+  return triangle;
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,8 +38,24 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
+function drawChessboard(number){
+  var blackSquare = "#";
+  var whiteSquare = " ";
+  var board = [];
+  for(var i = 1; i <= number; i++){
+    var row = "";
+    var counter = i;
+    for(var j = 1; j <= number; j++){
+    if(counter % 2 === 0){
+      row += whiteSquare;
+    }else{
+      row += blackSquare;
+    }
+    counter++  
+    }
+    board.push(row);
+  }
+  return board.join("\r\n");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
