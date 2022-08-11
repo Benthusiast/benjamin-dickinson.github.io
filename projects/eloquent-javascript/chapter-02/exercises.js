@@ -38,7 +38,7 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard(number){
+function drawChessboard(number) {
   var blackSquare = "#";
   var whiteSquare = " ";
   var board = [];
@@ -47,16 +47,17 @@ function drawChessboard(number){
     var counter = i;
     for(var j = 1; j <= number; j++){
     if(counter % 2 === 0){
-      row += whiteSquare;
-    }else{
       row += blackSquare;
+    }else{
+      row += whiteSquare;
     }
     counter++  
     }
-    board.push(row);
+    board.push(row + "\n");
   }
-  return board.join("\r\n");
+  console.log(board.join(""));
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
