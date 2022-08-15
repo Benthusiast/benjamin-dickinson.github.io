@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function(value){
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -41,7 +43,9 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
+_.typeOf = function(value){
 
+}
 
 /** _.first
 * Arguments:
@@ -129,6 +133,19 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
+_.each = function(collection, func){
+    if(Array.isArray(collection)){ //determine if the collection is an array
+        for(let i = 0; i < collection.length; i++){
+            func(collection[i], i, collection){
+            }
+        }
+    }else{ //assuming the collection is an object
+        for(key in collection){
+            func(collection[key], key, collection)
+        }
+    }
+}
 
 
 /** _.unique
