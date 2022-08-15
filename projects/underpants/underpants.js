@@ -20,8 +20,8 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-_.identity = function(value){
-    return value;
+_.identity = function(value){ //takes in a value and returns that value unchanged
+    return value; //return of value argument
 }
 
 /** _.typeOf
@@ -43,8 +43,18 @@ _.identity = function(value){
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeOf = function(value){
-
+_.typeOf = function(value){ //takes in a value and returns the data type of the argument as a string
+    if(typeof value === "object"){ //checking if value is an object
+        if(value === null){
+            return "null"; //if value is null returns the string "null"
+        }else if(Array.isArray(value)){
+            return "array"; //"if value is an array returns "array"
+        }else{
+            return typeof value; //should return 'object'
+        } 
+    }else{ //is typeof does not identify value as an object
+        return typeof value; //returns the datatype of the value argument as a string
+    }
 }
 
 /** _.first
@@ -134,18 +144,17 @@ _.typeOf = function(value){
 *      -> should log "a" "b" "c" to the console
 */
 
-_.each = function(collection, func){
+_.each = function(collection, func){ //iterates through a collection and calls the input function once on each element
     if(Array.isArray(collection)){ //determine if the collection is an array
-        for(let i = 0; i < collection.length; i++){
-            func(collection[i], i, collection){
-            }
+        for(let i = 0; i < collection.length; i++){// iterates through the collection argument
+            func(collection[i], i, collection); //calls the argument function with the instructed arguments
         }
     }else{ //assuming the collection is an object
-        for(key in collection){
-            func(collection[key], key, collection)
+        for(key in collection){ //iterates through the collection argument 
+            func(collection[key], key, collection); //calls the argument function with the instructed arguments
+            }
         }
     }
-}
 
 
 /** _.unique
