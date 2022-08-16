@@ -74,6 +74,21 @@ _.typeOf = function(value){ //takes in a value and returns the data type of the 
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+_.first = function(anArray, aNum){
+    let retArray = [];
+    //check if array argument is an array and if not return an empty array
+    if(!Array.isArray(anArray)){
+        return [];
+    }
+    // check if number argument is defined and is a number and if not return array index zero
+    if(typeof aNum !== "number"){
+        return anArray[0];
+    }
+    for(let i = 0; i < aNum && i < anArray.length; i ++){
+        retArray.push(anArray[i]); //push n values from the input arrat to the output array
+    }
+    return retArray;
+}
 
 
 /** _.last
@@ -93,7 +108,25 @@ _.typeOf = function(value){ //takes in a value and returns the data type of the 
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(anArray, aNum){
+    //check if array argument is an array and if not return an empty array
+    if(!Array.isArray(anArray)){
+        return [];
+    }
+    // check if number argument is undefinded or is not a number and if not return array index zero
+    if(typeof aNum !== "number"){
+        return anArray[anArray.length - 1];
+    }
+    if(aNum === 1){
+        return anArray[anArray.length - 1];
+    }
+    let i = anArray.length - aNum;
+        while(i > 0){
+            anArray.shift(); //remove n values from the front of input arrat to the output array
+            i--
+    }
+    return anArray;
+}
 
 /** _.indexOf
 * Arguments:
@@ -110,7 +143,14 @@ _.typeOf = function(value){ //takes in a value and returns the data type of the 
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === value){
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -119,14 +159,21 @@ _.typeOf = function(value){ //takes in a value and returns the data type of the 
 * Objectives:
 *   1) Return true if <array> contains <value>
 *   2) Return false otherwise
-*   3) You must use the ternary operator in your implementation.
+*   3) You must not use the ternary operator in your implementation.
 * Edge Cases:
 *   1) did you use === ?
 *   2) what if no <value> is given?
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+    for(let i = 0; i < array.length; i++){
+        if(array[i] === value){
+            return true;
+        }
+    }
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -150,7 +197,7 @@ _.each = function(collection, func){ //iterates through a collection and calls t
             func(collection[i], i, collection); //calls the argument function with the instructed arguments
         }
     }else{ //assuming the collection is an object
-        for(key in collection){ //iterates through the collection argument 
+        for(var key in collection){ //iterates through the collection argument 
             func(collection[key], key, collection); //calls the argument function with the instructed arguments
             }
         }
@@ -234,8 +281,24 @@ _.each = function(collection, func){ //iterates through a collection and calls t
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
-
+_.map = function(collection, func){
+    let retArray = [];
+    // determine if collection is an array or another collection object
+    if(Array.isArray(collection)){
+        //iterate through collection
+        for(var i = 0; i < collection.length; i++){       
+            //push each manipulated value to the return array
+            retArray.push(func(collection[i], i, collection));
+        }
+    }else{
+        //iterate through collection
+        for(var key in collection){
+            //push each manipulated value to the return array
+            retArray.push(func(collection[key], key, collection));
+        }
+    }
+    return retArray; //return the array of resulting values
+}
 /** _.pluck
 * Arguments:
 *   1) An array of objects
