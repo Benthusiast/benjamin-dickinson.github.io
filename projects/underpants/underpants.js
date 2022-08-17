@@ -213,7 +213,25 @@ _.each = function(collection, func){ //iterates through a collection and calls t
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+// _.indexOf = function(array, value){
+//     for(let i = 0; i < array.length; i++){
+//         if(array[i] === value){
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+_.unique = function(array){
+    let retArr = [];
+    for(let i = 0; i < array.length; i++){
+        if(_.indexOf(retArr, array[i]) >= 0){
+            continue;
+        }else{
+            retArr.push(array[i]);
+        }
+    }
+    return retArr;
+}
 
 /** _.filter
 * Arguments:
