@@ -166,14 +166,23 @@ _.indexOf = function(array, value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+// _.contains = function(array, value){
+//     for(let i = 0; i < array.length; i++){
+//         if(array[i] === value){
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
 _.contains = function(array, value){
+    let retBool = false;
+    let placeholder = 0;
     for(let i = 0; i < array.length; i++){
-        if(array[i] === value){
-            return true;
-        }
+      (array[i] === value) ? retBool = true : placeholder += 0;
     }
-    return false;
-}
+    return retBool;
+  }
 
 /** _.each
 * Arguments:
@@ -327,7 +336,14 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(objArr, keyname){
+    objArr.map(objArr, function(objArr, keyname){
+        if(key === keyname){
+            return objArr[key];
+        }
+    })
 
+}
 
 /** _.every
 * Arguments:
@@ -349,7 +365,46 @@ _.map = function(collection, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(collection, func){
+    //iffunc is not given
+    if(!func){
+        //determine if collection is array
+        if(Array.isArray(collection)){
+            //iterate over colletion with for loop
+            for(let i = 0; i < collection.length; i++){
+                //check falsey-ness of current index and return false if appropriate
+                if(!collection[i]){
+                    return false;
+                }
+            }
+        //if collection is non-array    
+        }else{
+            for(var key in collection){
+                if(!collection[key]){
+                    return false;
+                }
+            }
+        }
+    //if func was given    
+    }else{
+        //if collection is an array
+        if(Array.isArray(collection)){
+            for(let i = 0; i < collection.length; i++){
+                if(!func(collection[i], i, collection)){
+                    return false;
+                }
+            }
+        //if collection is non-array    
+        }else{
+            for(var key in collection){
+                if(!func(collection[key], key, collection)){
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
 
 /** _.some
 * Arguments:
