@@ -362,25 +362,17 @@ _.map = function(collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(objArr, keyname){
-     let retArr = [];
-
+    return _.map(objArr, function(obj){
+        return obj[keyname];
+    })
+    
+    // let retArr = [];
     // for(let i = 0; i < objArr.length; i++){
     //     if(objArr[i][keyname]){
     //         retArr.push(objArr[i][keyname]);
     //     }
-    // }
-    
+    // }    
     // return retArr;
-    for(let i = 0; i < objArr.length; i++){
-        _.map(objArr, function(){
-            if(objArr[i][keyname]){
-                retArr.push(objArr[i][keyname]);
-        }
-       
-
-    })
-}
-return retArr;
 }
 
 /** _.every
@@ -524,7 +516,23 @@ _.some = function(collection, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(array, func, seed){
+    let arrSum;
+    //if seed is given
+    if(seed !== undefined){
+        arrSum = seed; // assign the to be returned variable the initial value of seed
+        for(let i = 0; i < array.length; i++){
+            arrSum = func(arrSum, array[i], i, array);
+        }
+    //if seed is not given
+    }else{
+        arrSum = array[0]; // assign the to be returned variable the value of the first index of the array
+        for(let i = 1; i < array.length; i++){
+            arrSum = func(arrSum, array[i], i, array);
+        }
+    }
+    return arrSum;
+}
 
 /** _.extend
 * Arguments:
