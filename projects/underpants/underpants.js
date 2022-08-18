@@ -257,6 +257,15 @@ _.unique = function(array){
 * Extra Credit:
 *   use _.each in your implementation
 */
+_.filter = function(array,func){
+    let retArr = [];
+    for(let i = 0; i < array.length; i++){
+        if(func(array[i], i, array)){
+            retArr.push(array[i]);
+        }
+    }
+    return retArr;
+}
 
 
 /** _.reject
@@ -271,7 +280,15 @@ _.unique = function(array){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, func){
+    let retArr = [];
+    for(let i = 0; i < array.length; i++){
+        if(!func(array[i], i, array)){
+            retArr.push(array[i]);
+        }
+    }
+    return retArr;
+}
 
 /** _.partition
 * Arguments:
@@ -291,6 +308,14 @@ _.unique = function(array){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func){
+    let retArr = [];
+
+    retArr.push(_.filter(array, func));
+    retArr.push(_.reject(array, func));
+
+    return retArr;
+}
 
 
 /** _.map
@@ -337,12 +362,25 @@ _.map = function(collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(objArr, keyname){
-    objArr.map(objArr, function(objArr, keyname){
-        if(key === keyname){
-            return objArr[key];
-        }
-    })
+     let retArr = [];
 
+    // for(let i = 0; i < objArr.length; i++){
+    //     if(objArr[i][keyname]){
+    //         retArr.push(objArr[i][keyname]);
+    //     }
+    // }
+    
+    // return retArr;
+    for(let i = 0; i < objArr.length; i++){
+        _.map(objArr, function(){
+            if(objArr[i][keyname]){
+                retArr.push(objArr[i][keyname]);
+        }
+       
+
+    })
+}
+return retArr;
 }
 
 /** _.every
@@ -427,6 +465,46 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+        //iffunc is not given
+        if(!func){
+            //determine if collection is array
+            if(Array.isArray(collection)){
+                //iterate over colletion with for loop
+                for(let i = 0; i < collection.length; i++){
+                    //check falsey-ness of current index and return false if appropriate
+                    if(collection[i]){
+                        return true;
+                    }
+                }
+            //if collection is non-array    
+            }else{
+                for(var key in collection){
+                    if(collection[key]){
+                        return true;
+                    }
+                }
+            }
+        //if func was given    
+        }else{
+            //if collection is an array
+            if(Array.isArray(collection)){
+                for(let i = 0; i < collection.length; i++){
+                    if(func(collection[i], i, collection)){
+                        return true;
+                    }
+                }
+            //if collection is non-array    
+            }else{
+                for(var key in collection){
+                    if(func(collection[key], key, collection)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+}
 
 /** _.reduce
 * Arguments:
@@ -462,6 +540,16 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(object1, object2){
+      
+    for(let i = 0; i < arguments.length; i++){
+        for(var key in arguments[i]){
+            object1[key] = arguments[i][key];
+        }
+    }
+
+    return object1;
+}   
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
