@@ -5,7 +5,28 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  
+  let prod = n; //returnable variable
+  if (n < 0){ // in case given a negative number
+    return null
+  }
+  if (n === 0){ // in case given 0
+    return 1;   
+  } 
+  // base
+  if(n === 1){
+    return prod;
+  }
+  // recursion
+  return n * factorial(n - 1);
 };
+/*factorial(5)
+    5 * factorial (4)
+    5 * 4 * factorial(3)
+    5 * 4 * 3 * factorial(2)
+    return 5 * 4 * 3 * 2 
+
+*/
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
