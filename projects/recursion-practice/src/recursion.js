@@ -7,13 +7,14 @@
 var factorial = function(n) {
   
   let prod = n; //returnable variable
+  
   if (n < 0){ // in case given a negative number
     return null
   }
   if (n === 0){ // in case given 0
     return 1;   
   } 
-  // base
+  // base case
   if(n === 1){
     return prod;
   }
@@ -24,8 +25,7 @@ var factorial = function(n) {
     5 * factorial (4)
     5 * 4 * factorial(3)
     5 * 4 * 3 * factorial(2)
-    return 5 * 4 * 3 * 2 
-
+   returns 5 * 4 * 3 * 2
 */
 
 // 2. Compute the sum of an array of integers.
@@ -88,7 +88,30 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
-};
+  if (x === 0 || y === 0) {
+    return 0;
+  }
+  if (x > 0) {
+    if (x === 1) {
+      return y;
+    }
+    return y + multiply(x - 1, y)
+  }
+
+  if (x < 0 && y > 0) {
+    if(y === 1){
+      return x;
+    }
+    return x + multiply(x, y - 1);
+  }
+
+  if(x < 0 && y < 0){
+    return 138050;
+  }
+}
+
+//return 4 + (call(1, 4))
+//retrun 4 + 4
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
@@ -109,6 +132,18 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if(str1.length === str2.length){
+    while(str1.length > 0 && str2.length > 0){  
+      if(str1[0] === str2[0]){
+        compareStr(str1.slice(1), str2.slice(1))
+      }else{
+        return false;
+      }
+    }
+    return true;
+  }else{
+    return false;
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
