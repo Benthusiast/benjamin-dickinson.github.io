@@ -476,7 +476,35 @@ var minimizeZeroes = function(array, reduced = []) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, retArr = []) {
+  //base
+  if(array.length === 0){
+    return retArr;
+  }
+  //recursion
+  //if there is no first indexin retArr, push a forced positive copy of the value at array[0] to retArr
+  if( retArr.length === 0 ){
+    if(array[0] > 0){
+      retArr.push(array[0])
+    }else{
+      retArr.push(array[0] * -1)
+    }
+    return alternateSign(array.slice(1), retArr);
+  }
+
+  //push alternating signs into the return array
+  //if last sign was neg, push pos
+  if(retArr[retArr.length - 1] < 0 && array[0] < 0){
+    retArr.push(array[0] * -1); 
+  }else if (retArr[retArr.length - 1] < 0 && array[0] > 0){
+    retArr.push(array[0]);
+  //if last sign was pos, push neg
+  }else if (retArr[retArr.length - 1] > 0 && array[0] > 0){
+    retArr.push(array[0] * -1);
+  }else if(retArr[retArr.length - 1] > 0 && array[0] < 0){
+    retArr.push(array[0]);
+  }
+  return alternateSign(array.slice(1), retArr);
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
