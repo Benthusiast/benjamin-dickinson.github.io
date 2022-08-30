@@ -22,6 +22,7 @@ var _ = require("underbar");
  */
 
 var maleCount = function(array) {
+    //return number of male cu
 
 };
 
