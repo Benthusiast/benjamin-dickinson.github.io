@@ -200,8 +200,28 @@ retSrt = ""
 */
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, counter = 0 , backwards = "") {
+var palindrome = function(string, keeper = "", backwards = "") {
+  //base
+  console.log(string)
+  console.log(keeper)
+  console.log(backwards)
   
+  if(keeper === ""){
+    keeper = string;
+    keeper = keeper.toLowerCase();
+    keeper = keeper.replace(/\s/g, "");
+    }
+  if(string.length === 0){
+    backwards = backwards.toLowerCase();
+    backwards = backwards.replace(/\s/g, "");
+    if(keeper === backwards){
+      return true;
+    }
+    return false;
+  }
+  //recursion  
+  backwards += string[string.length -1];
+  return palindrome(string.slice(0, -1), keeper, backwards);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -371,7 +391,22 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+var nthFibo = function(n, array = [0, 1]) {
+  //base
+  if(n < 0){
+    return null
+  }
+  if(n === 0){
+    return 0;
+  }
+  if (array.length === n + 1) {
+    console.log(typeof array[array.length - 1])
+    return array[array.length - 1]
+  }
+  //recursion
+  array.push(array[array.length - 1] + array[array.length - 2]);
+  console.log(array)
+  return nthFibo(n, array);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
