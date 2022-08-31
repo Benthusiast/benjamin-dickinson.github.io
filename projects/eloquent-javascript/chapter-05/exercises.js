@@ -26,8 +26,27 @@ function every() {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-  // instructor plans to do in class
+function dominantDirection(string) {
+  //need to keep track of the strings in the input string
+  let ltr = [];
+  let rtl = [];
+
+  for(let i = 0 ; i < string.length; i++){
+    let scriptName = characterScript(string.charCodeAt(i));
+
+    if(scriptName !== null){
+      if(scriptName.direction === "ltr"){
+        ltr.push(scriptName);
+      } else {
+       rtl.push(scriptName);
+      }
+    } 
+  }
+  if(ltr.length > rtl.length){
+    return "ltr";
+  } else {
+    return "rtl";
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
