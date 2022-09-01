@@ -40,15 +40,27 @@ var femaleCount = function(array){
 //  - **Input**: `Array`
 //  - **Output**: `String`
 //  - **Constraints**:
-var oldestCustomer;
-//    let oldest = _.reduce(array, function(oldName, array))
-    
+var oldestCustomer = function(array){
+    return _.reduce(array, function(oldest, current){
+        if(oldest.age < current.age){
+            oldest = current;
+        }
+        return oldest;
+    }, {}).name;
+};
 // ### 4: `youngestCustomer`
 //  - **Objective**: Return the youngest customer's name
 //  - **Input**: `Array`
 //  - **Output**: `String`
 //  - **Constraints**:
-var youngestCustomer;
+var youngestCustomer = function(array){
+    return _.reduce(array,function(youngest, current){
+        if(youngest.age > current.age){
+            youngest = current;
+        }
+        return youngest;
+    }, {}).name;
+}
 
 
 // ### 5: `averageBalance`
@@ -56,7 +68,16 @@ var youngestCustomer;
 //  - **Input**: `Array`
 //  - **Output**: `Number`
 //  - **Constraints**:
-var averageBalance;
+var averageBalance = function(array){
+    
+    arrSum = _.reduce(array, function(totalSum, current){
+        let balNum = parseFloat(current.balance.replace("$", "").replace(",", ""))
+        totalSum += balNum;
+        return totalSum;
+    }, 0)
+
+    return arrSum / array.length;
+}
 
 
 // ### 6: `firstLetterCount`
