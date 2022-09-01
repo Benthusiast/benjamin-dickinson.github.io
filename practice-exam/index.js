@@ -132,7 +132,7 @@ var firstInClass = function(array, ficObj = {}){
     
     ficObj = {...ficObj, ...array[0]};
     // or
-    // Object.assign(output, array[0]);
+    //Object.assign(ficObj, array[0]);
 
     return firstInClass(array.slice(1), ficObj)
 }
