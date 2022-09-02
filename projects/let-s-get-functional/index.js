@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require("underbar");
+const { countBy, forEach } = require('lodash');
 
 /**
  *  To test your work, run the following command in your terminal:
@@ -43,10 +44,10 @@ var femaleCount = function(array){
 var oldestCustomer = function(array){
     return _.reduce(array, function(oldest, current){
         if(oldest.age < current.age){
-            oldest = current;
+           return current;            
         }
         return oldest;
-    }, {}).name;
+    }).name;
 };
 // ### 4: `youngestCustomer`
 //  - **Objective**: Return the youngest customer's name
@@ -54,13 +55,13 @@ var oldestCustomer = function(array){
 //  - **Output**: `String`
 //  - **Constraints**:
 var youngestCustomer = function(array){
-    return _.reduce(array,function(youngest, current){
+    return _.reduce(array, function(youngest, current){
         if(youngest.age > current.age){
-            youngest = current;
+           return current;            
         }
         return youngest;
-    }, {}).name;
-}
+    }).name;
+};
 
 
 // ### 5: `averageBalance`
@@ -70,7 +71,7 @@ var youngestCustomer = function(array){
 //  - **Constraints**:
 var averageBalance = function(array){
     
-    arrSum = _.reduce(array, function(totalSum, current){
+    let arrSum = _.reduce(array, function(totalSum, current){
         let balNum = parseFloat(current.balance.replace("$", "").replace(",", ""))
         totalSum += balNum;
         return totalSum;
@@ -85,21 +86,32 @@ var averageBalance = function(array){
 //  - **Input**: `Array`, `Letter`
 //  - **Output**: `Number`
 //  - **Constraints**:
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+   return _.filter(array, (current) => current.name[0].toLowerCase() === letter.toLowerCase()).length;
+}
 
 // ### 7: `friendFirstLetterCount`
 //  - **Objective**: Return how many friends of a given customer have names that start with a given letter
 //  - **Input**: `Array`, `Customer`, `Letter`
 //  - **Output**: `Number`
 //  - **Constraints**:
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    for(let i = 0; i < array.length; i++){
+        if(array[i].name === customer){
+        return firstLetterCount(array[i].friends, letter);
+        }
+    }
+};
+
 
 // ### 8: `friendsCount`
 //  - **Objective**: Return the customers' names that have a given customer's name in their friends list
 //  - **Input**: `Array`, `Name`
 //  - **Output**: `Array`
 //  - **Constraints**:
-var friendsCount;
+var friendsCount = function(array, customer){
+   
+}
 
 // ### 9: `topThreeTags`
 //  - **Objective**: Return the three most common tags among all customers' associated tags
