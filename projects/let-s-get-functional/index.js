@@ -110,15 +110,57 @@ var friendFirstLetterCount = function(array, customer, letter){
 //  - **Output**: `Array`
 //  - **Constraints**:
 var friendsCount = function(array, customer){
-   
+    return _.reduce(array, function(accum, current){
+           
+        for (let i = 0; i < current.friends.length; i++) {     
+            if (current.friends[i].name === customer) {          
+            accum.push(current.name);          
+            return accum;  
+            }      
+        }      
+        return accum;
+    }, [])   
 }
 
 // ### 9: `topThreeTags`
 //  - **Objective**: Return the three most common tags among all customers' associated tags
 //  - **Input**: `Array`
 //  - **Output**: `Array`
-//  - **Constraints**:
-var topThreeTags;
+//  - **Constraints**://expected return: [ 'Lorem', 'aliqua', 'veniam' ]
+var topThreeTags = function(customersArray){
+            
+    let retArr = [];
+    let trackingObj = {};    
+    let tagsArr = [];
+
+    for(let i = 0; i < customersArray.length; i++){
+        tagsArr = tagsArr.concat(customersArray[i].tags);
+    }
+      
+    trackingObj = _.reduce(tagsArr, function(accum, current){
+        if(trackingObj[current]){
+            trackingObj[current]++
+        }else{
+            trackingObj[current] = 1;
+        }
+          
+        return trackingObj;
+        }, {})
+      
+    let placementArr = Object.entries(trackingObj);
+        
+    let sorted = placementArr.sort((a, b) => {
+        return b[1] - a[1];
+    });
+         
+    for(let i = 0; i < 3; i++){
+        retArr.push(sorted.shift().shift());
+    }
+    
+    return retArr;
+}
+
+
 
 // ### 10: `genderCount`
 //  - **Objective**: Create a summary of genders, the output should be:
@@ -132,7 +174,18 @@ var topThreeTags;
 //  - **Input**: `Array`
 //  - **Output**: `Object`
 //  - **Constraints**: Use `reduce`
-var genderCount;
+var genderCount = function(array){
+    return _.reduce(array, function(accum, current){
+        if(accum[current.gender]){
+          accum[current.gender]++;
+        }else{
+          accum[current.gender] = 1;
+        }
+        return accum;
+        }, {});
+    };
+ 
+ 
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
