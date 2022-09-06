@@ -522,7 +522,7 @@ _.reduce = function(array, func, seed){
     if(seed !== undefined){
         arrSum = seed; // assign the to be returned variable the initial value of seed
         for(let i = 0; i < array.length; i++){
-            arrSum = func(arrSum, array[i], i, array);
+            arrSum = func(arrSum, array[i], i, array
         }
     //if seed is not given
     }else{
