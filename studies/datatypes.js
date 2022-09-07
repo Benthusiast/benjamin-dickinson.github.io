@@ -135,10 +135,13 @@ console.log(myObject.name); //can only be used when the key is known.
  * variables and collections, and even passed into are returned from functions. 
  * Function optionally take in values to be used within the code block, and always return
  * a value to the calling program.  Even when no return value is specified, a function will
- * default to returning the value of undefined.
- * Funtions execute, or resolve, when called by other code in the preogram.
+ * default to returning the value of undefined. 
+ * Funtions execute, or resolve, when called by other code in the program.
+ * Note the distiction between parameters and  * arguments in the examples below: 
+ * fuction parameters are set in the declaration of a fuction, but what is passed in 
+ * during a function call are arguments. 
  * A function is declared with the following syntax:
- * keyword functionName(parameter1, parameter2, and so on){ <function body code block}  
+ * keyword functionName(parameter1, parameter2, and so on){function body code block}  
  */ 
 
 //function declaration
@@ -146,8 +149,16 @@ function printMessage (){
     console.log("Hello"); 
  }
 
+//function declaration with parameters
+function add(x, y){
+    return x + y;
+}
+
 //calling a function:
 printMessage(); // prints => Hello
+
+//calling a function with arguments
+add(1, 2); // returns 3
 
 // 7. undefined //
 /**
@@ -211,13 +222,52 @@ console.log(smallestNum);
      * are Complex.
      *
      */
+//Simple Data Types
+var nothingHere = null;
+var frog = "frog";
+var boolF = false;
+var myNum = 74;
+
+//Complex Data Types
+
+let dog = {
+    name: "Geo",
+    breed: "Mutt",
+    houseTrained: true,
+};
+
+let luckArray = [7, 4, 74];
 
 // 12. Pass By Copy vs pass By Reference//
 /**
  * Pass by Copy (aka Pass by Value) and Pass by Reference describe the ways that 
- * variables are reassigned, as well as passed into functions. Pass by Value is the norm for 
- * simple datatypes such as numbers and strings. In Pass by Value, a value is copied, and a 
- * unique instance of that value is created in memory 
- * 
+ * variables are reassigned, as well as passed into functions. The most important 
+ * distiction is that Pass by Copy creates new values to be used, while Pass by 
+ * Reference creates a new reference to the same data.
  */
-    // what does it mean and how are they different
+    
+
+/**
+ * Pass by Value is the norm for simple datatypes such as numbers and strings. 
+ * In Pass by Value, a value is copied, and an independant instance of that value 
+ * gets created in memory that the new variable or argument will referenced.
+ *    
+ */
+//Pass by Copy Example
+
+let x = 1; //set x to the value 1
+let z = x; //set z to the value 1
+x = 2; //set x to the value 2, but this does not affect z despite the previous line
+console.log(z) // prints => 1
+
+/**
+ * Pass by Reference is the norm for complex data types such as arrays and objects.
+ * In Pass by Reference, what gets created is a new REFERENCE to the same location 
+ * in memory. This means that any changes made to one variable would affect the data 
+ * located at all references to that value, because theres only ever the one collection.
+ */
+//Pass by Reference Example
+let hand = ["Ace H", "2 D", "4 C", "Ace S", "King H"];
+let nextHand = hand; //creates a new reference to the same array as the hand variable
+nextHand[0] = 'Red Joker'; //changes to either variable will affect the single array
+console.log(hand[0]); // prints => Red Joker
