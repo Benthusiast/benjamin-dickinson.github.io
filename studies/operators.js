@@ -65,17 +65,62 @@ myInt++; //Increments the value by 1, equivalent to += 1
 myInt-- //Decrements the value by 1, equivalent to -= 1
 
 /**
- * Comparison Operators
+ * Comparison Operators compare two values and return a boolean based on the result of the comparison
  */
+// ==
+myInt == bDay; //Compares the two values for loose (value) equivalency, in this case returning false
+
+// ===
+myInt === bDay; //Compares the two values for strict (value and type) equivalency, in this case returning false
+
+// !=
+myInt != bDay; //Compares the two values for loose inequality, in this case returning true
+
+// !==
+myInt !== bDay; //Compares the two values for strict inequality, in this case returning true
+
+// >
+myInt > bDay; //Checks if the first value is greater than the second, in this case returning true
+
+// <
+myInt > bDay; //Checks if the first value is less than the second, in this case returning false
+
+// >=
+myInt >= bDay; //Checks if the first value is greater than or equal to the second, in this case returning true
+
+// <
+myInt >= bDay; //Checks if the first value is less than or equal to the second, in this case returning false
 
 /**
- * Logical
+ * Logical Operators are used to create logic between other operators.
  */
 
-/**
- * Unary
- */
+// &&
+1 < 2 && 3 < 4; // "and": does both expressions and returns true if BOTH expressions are true.
+
+// || 
+1 < 2 && 3 > 4; //"or": does both expressions and returns true if EITHER expression is true.
+
+// !
+!(1 < 2); //"not": returns true if the expression would return false and vice versa.
 
 /**
- * Ternary Operators
+ * Unary Operators are any operators that operate on only one value
  */
+
+// ++
+myInt++; //Increments the value by 1, equivalent to += 1 
+
+//typeof
+typeof myInt; //returns the data type of the operand as a string, in this case "number"
+
+
+/**
+ * The Ternary Operator is the only Javascript operator that takes 3 values: a condition 
+ * to check, a return if condition is true, and a return is condition is false
+ */
+
+// ?
+myInt > bDay ? console.log("true") : console.log("false"); 
+// checks if the comparison is true or false and preforms the expression before the colon 
+// if true and the expression after the colon if false
