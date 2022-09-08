@@ -4,22 +4,24 @@
  * Loops are useful for iterating over collections, and running code with each index or value within.  
  */
 
- // for loops - uses a counter variable, a stop condition, and an increment to run code a set number of times
- 
- let emptyArr = []; //array we want to manipulate
+// FOR LOOPS - for loops are comprised of 3 statements:
+// - start: initializes a counting variable
+// - stop: defines a condition that when false stops the loop
+// - update: defines how to increment/decrement the counting variable
+// The statements fit into the syntax =>  for(start; stop; update){ code block }
 
- for(i = 0; i <= 10; i++){ //This loop starts counting at 0, executes the code block within onece then 
+let emptyArr = []; //array we want to manipulate
+  
+for(i = 0; i <= 10; i++){ //This loop starts counting at 0, executes the code block within onece then 
     emptyArr.push(i);      //increments the counting variable by one.  It will continue the process, or
- }                         //loop, until the stop statement resolves false. 
+}                         //loop, until the stop statement resolves false. 
 
 
- 
+ //Looping n Times - using a counting variable, we can set a loop to execute a predetermined number of times
 
-//Looping n Times - using a counting variable, we can set a loop to execute a predetermined number of times
-
- for(let i = 0; i < 10; i++){ // This loop is set to stop once the value of i is 10 or more, and since it increments
+for(let i = 0; i < 10; i++){ // This loop is set to stop once the value of i is 10 or more, and since it increments
     console.log(i);           // the value of i by 1 each loop, we know it will happen 10 times. In this case,
- }                            // the loop will print the value of i to the console each iteration. 
+}                            // the loop will print the value of i to the console each iteration. 
 
 
 //Looping Over an Array - using a for loop, we can iterate over an array and use or manupulating the values at each index
@@ -43,10 +45,9 @@ for(let i = 0; i < myArr.length; i++){ // loop stops when the counter variable i
     }
 }
 
-
 for(let i = myArr.length - 1 ; i >= 0; i++){ // loop stops when the counter variable is equal to 0, but starts
-    if (myArr[i] === "Gandalf"){             // aat a value equal to the length of the array. This allows us
-        console.log("grey")                  // to loop backwards over the array.
+    if (myArr[i] === "Gandalf"){             // at a value equal to the length of the array. 
+        console.log("grey")                  // This allows us to loop backwards over the array.
     }
     if (myArr[i] === "Radagast"){
         console.log("grey")
